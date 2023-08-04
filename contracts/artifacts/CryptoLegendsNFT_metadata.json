@@ -699,11 +699,11 @@
 			]
 		},
 		"contracts/CryptoLegendsNFT.sol": {
-			"keccak256": "0x063a674cc7af634780259564afe299838e88a104a775893d71430f565529425f",
+			"keccak256": "0xf4e173dddad434a297e84abed2d7d8ef54f52252271d284dc1939b60b50cf69b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://079c8bc5b8f43f4dccccfc0ff56efca57fe500e11e3bd14b1c6c887287d843ff",
-				"dweb:/ipfs/QmTLjzYQLqVB4Rm4McEzSJeRn2dN2JooZwVfcW7D8zuVgD"
+				"bzz-raw://23eafb2f8328d91561d44392634eaebe98473914fd4e90f0563e5c7fe74eab7a",
+				"dweb:/ipfs/QmcVuQecVwjbxsJqm3VkDAZo3cRJ6tf5Jh7XqurTdQ5jXv"
 			]
 		},
 		"contracts/libraries/PerlinNoise.sol": {

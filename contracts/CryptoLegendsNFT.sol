@@ -33,7 +33,6 @@ contract CryptoLegendsNFT is ERC721Enumerable {
 
     enum Terrain {
         Lake,
-        River,
         Plain,
         Mountain
     }
@@ -55,7 +54,7 @@ contract CryptoLegendsNFT is ERC721Enumerable {
         if (n3d < 16384) {
             return Terrain.Lake;
         } else if (n3d < 32768) {
-            return Terrain.River;
+            return Terrain.Plain;
         } else if (n3d < 49152) {
             return Terrain.Plain;
         } else {
