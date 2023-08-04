@@ -7,15 +7,9 @@ import "./libraries/Perlin.sol";
 contract CryptoLegendsNFT is ERC721Enumerable {
     constructor() ERC721("CryptoLegendsNFT", "CLT") {}
 
-    struct LevelWorld {
-        uint256 level;
-        Monster[] defeatedMonsters;
-    }
-
     struct World {
-        uint256 level;
-        uint256 releasableLevel;
-        mapping(uint256 => LevelWorld) levelWorlds;
+        bool play;
+        mapping(uint256 => Monster) defeatedMonsters;
     }
 
     struct Monster {
@@ -28,10 +22,17 @@ contract CryptoLegendsNFT is ERC721Enumerable {
 
     uint256 lastTokenId = 0;
 
-    uint256 worldScale = 50;
+    uint256 worldScale = 25;
+    uint256 worldWidth = 25;
 
     mapping(address => World) public addressToWorld;
-    mapping(address => uint256) ownerWorldCount;
+    mapping(address => mapping(uint256 => mapping(uint256 => Tile)))
+        public addressToWorldMap;
+
+    //99x99
+    //x:0-98
+    //y:0-98
+    //center:49,49
 
     struct Coords {
         uint256 x;
@@ -78,32 +79,13 @@ contract CryptoLegendsNFT is ERC721Enumerable {
 
     function start() public {
         require(
-            ownerWorldCount[msg.sender] == 0,
-            "Multiple worlds cannot be created at this time!"
+            addressToWorld[msg.sender].play == true,
+            "You have already started the game"
         );
-        ownerWorldCount[msg.sender]++;
+        addressToWorld[msg.sender].play = true;
         lastTokenId++;
 
-        addressToWorld[msg.sender].releasableLevel = 1;
-        _releaseLevel(1);
-
         _mint(msg.sender, lastTokenId);
-    }
-
-    function _releaseLevel(uint256 _level) private {
-        //ゲームを始めているか
-        require(isStarted(), "Must have started the game");
-        //解放可能なレベルがあるか
-        require(
-            addressToWorld[msg.sender].releasableLevel == _level,
-            "Level must be releasable"
-        );
-
-        //レベルワールドを追加する
-        addressToWorld[msg.sender].levelWorlds[_level].level = _level;
-
-        //レベルを上げる
-        addressToWorld[msg.sender].level = _level;
     }
 
     function getWorldSeed() public view returns (uint256) {
@@ -113,20 +95,18 @@ contract CryptoLegendsNFT is ERC721Enumerable {
     }
 
     function isStarted() public view returns (bool) {
-        return ownerWorldCount[msg.sender] == 1;
+        return addressToWorld[msg.sender].play;
     }
 
     function _hashSender() private view returns (bytes32) {
         return keccak256(abi.encodePacked(msg.sender));
     }
 
-    function _coordsToTile(uint256 _x,uint256 _y, uint256 _seed)
+    function _coordsToTile(Coords memory coords, uint256 _seed)
         private
         view
         returns (Tile memory)
     {
-        Coords memory coords = Coords(_x,_y);
-
         uint256 perlin1 = Perlin.computePerlin(
             uint32(coords.x),
             uint32(coords.y),
@@ -215,23 +195,22 @@ contract CryptoLegendsNFT is ERC721Enumerable {
             });
     }
 
-    function getOwnCoordsToTile(uint256 _x,uint256 _y)
+    function getOwnCoordsToTile(uint256 _x, uint256 _y)
         public
         view
         returns (Tile memory)
     {
+        // Tile memory cacheWorldMap = addressToWorldMap[msg.sender][_x][_y];
+        // if (cacheWorldMap.tileType != TileType.UNKNOWN) {
+        //     return cacheWorldMap;
+        // } else {
+        //     uint256 _seed = getWorldSeed();
+        //     Tile memory tile = _coordsToTile(Coords(_x, _y), _seed);
+        //     addressToWorldMap[msg.sender][_x][_y] = tile;
+        //     return tile;
+        // }
         uint256 _seed = getWorldSeed();
-        return _coordsToTile(_x,_y, _seed);
-    }
-
-    function getOwnMapTile() public view returns(Tile[][] memory) {
-        Tile[][] memory temp;
-        for(uint256 _x=0;_x<=50;_x++){
-            for(uint256 _y=0;_y<=50;_y++){
-                temp[_x][_y]=getOwnCoordsToTile(_x,_y);
-            }
-        }
-        return temp;
+        return _coordsToTile(Coords(_x, _y), _seed);
     }
 
     function getRaritySeed(Coords memory coords)

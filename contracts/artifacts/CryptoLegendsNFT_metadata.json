@@ -96,14 +96,70 @@
 				"name": "addressToWorld",
 				"outputs": [
 					{
+						"internalType": "bool",
+						"name": "play",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
-						"name": "level",
+						"name": "",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "releasableLevel",
+						"name": "",
 						"type": "uint256"
+					}
+				],
+				"name": "addressToWorldMap",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "x",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "y",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct CryptoLegendsNFT.Coords",
+						"name": "coords",
+						"type": "tuple"
+					},
+					{
+						"internalType": "uint256",
+						"name": "raritySeed",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum CryptoLegendsNFT.TileType",
+						"name": "tileType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "enum CryptoLegendsNFT.TemperatureType",
+						"name": "temperatureType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "enum CryptoLegendsNFT.AltitudeType",
+						"name": "altitudeType",
+						"type": "uint8"
 					}
 				],
 				"stateMutability": "view",
@@ -228,63 +284,6 @@
 						"internalType": "struct CryptoLegendsNFT.Tile",
 						"name": "",
 						"type": "tuple"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getOwnMapTile",
-				"outputs": [
-					{
-						"components": [
-							{
-								"components": [
-									{
-										"internalType": "uint256",
-										"name": "x",
-										"type": "uint256"
-									},
-									{
-										"internalType": "uint256",
-										"name": "y",
-										"type": "uint256"
-									}
-								],
-								"internalType": "struct CryptoLegendsNFT.Coords",
-								"name": "coords",
-								"type": "tuple"
-							},
-							{
-								"internalType": "uint256[2]",
-								"name": "perlin",
-								"type": "uint256[2]"
-							},
-							{
-								"internalType": "uint256",
-								"name": "raritySeed",
-								"type": "uint256"
-							},
-							{
-								"internalType": "enum CryptoLegendsNFT.TileType",
-								"name": "tileType",
-								"type": "uint8"
-							},
-							{
-								"internalType": "enum CryptoLegendsNFT.TemperatureType",
-								"name": "temperatureType",
-								"type": "uint8"
-							},
-							{
-								"internalType": "enum CryptoLegendsNFT.AltitudeType",
-								"name": "altitudeType",
-								"type": "uint8"
-							}
-						],
-						"internalType": "struct CryptoLegendsNFT.Tile[][]",
-						"name": "",
-						"type": "tuple[][]"
 					}
 				],
 				"stateMutability": "view",
@@ -779,11 +778,11 @@
 			]
 		},
 		"contracts/CryptoLegendsNFT.sol": {
-			"keccak256": "0x04e13fc1bd6c5da9bc23c05f927f9581e8d7befc6f71388008409e6df35aa357",
+			"keccak256": "0x22a5316b0321c07b87776033d4a193cdffe0f0090b6e5207335b77af9949daf2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5a35c0039d2f172bf96004ef0c0a1b7d029cd47594b459d02a0bbcc2292dbfb6",
-				"dweb:/ipfs/QmagRTrg7hGASFLsGDb7ayq9aKXHkTPQtgD9hPo5Z9XPhq"
+				"bzz-raw://7e3ae27af1ced38bedfdd6c3642b7de1a79925c1954b9864488d5015ae5cd95d",
+				"dweb:/ipfs/QmWvF67vYNHAUDdspmp8FdfkivRY7uoADjPpW15H8UVEtL"
 			]
 		},
 		"contracts/libraries/Perlin.sol": {
