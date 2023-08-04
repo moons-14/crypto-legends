@@ -2,6 +2,7 @@
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "./libraries/PerlinNoise.sol";
 
 contract CryptoLegendsNFT is ERC721Enumerable {
     constructor() ERC721("CryptoLegendsNFT", "CLT") {}
@@ -37,41 +38,36 @@ contract CryptoLegendsNFT is ERC721Enumerable {
         Mountain
     }
 
-    // Hashing the seed with coordinates
-    function _coordinateHashFunction(
-        uint256 _seed,
-        uint256 _x,
-        uint256 _y
-    ) internal pure returns (uint256) {
-        return uint256(keccak256(abi.encodePacked(_seed, _x, _y)));
-    }
-
     // Mapping the hashed value to a terrain type
     function getTerrain(
         uint256 _seed,
         uint256 _x,
         uint256 _y
     ) public pure returns (Terrain) {
-        uint256 hashedValue = _coordinateHashFunction(_seed, _x, _y);
-        if (hashedValue % 4 == 0) {
+        require(_x <= 100 && _x >= 0);
+        require(_y <= 100 && _x >= 0);
+        int256 n3d = PerlinNoise.noise3d(
+            int256((_x * 65536) / 100),
+            int256((_y * 65536) / 100),
+            int256(((_seed % 100) * 65536) / 100)
+        );
+
+        if (n3d < 16384) {
             return Terrain.Lake;
-        } else if (hashedValue % 4 == 1) {
+        } else if (n3d < 32768) {
             return Terrain.River;
-        } else if (hashedValue % 4 == 2) {
+        } else if (n3d < 49152) {
             return Terrain.Plain;
         } else {
             return Terrain.Mountain;
         }
     }
 
-    function getMyTerrain(uint256 _x, uint256 _y)
-        public
-        view
-        returns (Terrain)
-    {
+    function getMyTerrain(uint256 _x, uint256 _y) public view returns (Terrain) {
         uint256 _seed = getWorldSeed();
         return getTerrain(_seed, _x, _y);
     }
+
 
     function start() public {
         require(

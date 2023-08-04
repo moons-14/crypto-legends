@@ -1,0 +1,123 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "x",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "y",
+						"type": "int256"
+					}
+				],
+				"name": "noise2d",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "x",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "y",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "z",
+						"type": "int256"
+					}
+				],
+				"name": "noise3d",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"noise2d(int256,int256)": {
+					"details": "This function should be kept public. Inlining the bytecode for this function      into other functions could explode its compiled size because of how `ftable`      and `ptable` were written.",
+					"params": {
+						"x": "the x coordinate.",
+						"y": "the y coordinate."
+					}
+				},
+				"noise3d(int256,int256,int256)": {
+					"details": "This function should be kept public. Inlining the bytecode for this function      into other functions could explode its compiled size because of how `ftable`      and `ptable` were written.",
+					"params": {
+						"x": "the x coordinate.",
+						"y": "the y coordinate.",
+						"z": "the z coordinate."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"noise2d(int256,int256)": {
+					"notice": "Computes the noise value for a 2D point."
+				},
+				"noise3d(int256,int256,int256)": {
+					"notice": "Computes the noise value for a 3D point."
+				}
+			},
+			"notice": "An implementation of Perlin Noise that uses 16 bit fixed point arithmetic.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/libraries/PerlinNoise.sol": "PerlinNoise"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/libraries/PerlinNoise.sol": {
+			"keccak256": "0x6485058fe43d63be6c6989aa0fc31023c227af978aec35b8afb96c59e31c6c45",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0f574b2842d5b62b98297ef103b7ce91af7df277fc15276b0b590901b2697c98",
+				"dweb:/ipfs/QmdPGZWKJsNNPEbihrjtTvpSnS5nkhT4AkcMQEADqWwbjA"
+			]
+		}
+	},
+	"version": 1
+}
