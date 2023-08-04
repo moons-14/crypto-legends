@@ -89,6 +89,30 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "addressToWorld",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "level",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "releasableLevel",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "to",
 						"type": "address"
 					},
@@ -168,6 +192,19 @@
 					}
 				],
 				"name": "isApprovedForAll",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isStarted",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -609,11 +646,11 @@
 			]
 		},
 		"contracts/CryptoLegendsNFT.sol": {
-			"keccak256": "0xbf83dc4bb901b64da127b5f6f7a66aff999594de7bf6c97f698e0450c210789c",
+			"keccak256": "0x2ffdc2531065f6d44f7d062cb878d6b4b23e3e8b39c7d335f0605c6f7fc9ce57",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8230c0478c5d7c4e15efed5c683424684e356c9e2762f581a2602905f01f37f0",
-				"dweb:/ipfs/QmfN1XzDEsXuSHk3pnfPf2KpSZ61HpTifEVumL3MSPgPHe"
+				"bzz-raw://91934e4521197ca4535b027d4c183b2728b9290278831773dd263d7281a57b17",
+				"dweb:/ipfs/QmSvG4dL4Ad7uvkbSqVTzu95JKu1MamSkZpuvC9d6YabP8"
 			]
 		}
 	},
