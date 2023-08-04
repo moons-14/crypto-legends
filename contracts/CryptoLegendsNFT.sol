@@ -30,6 +30,49 @@ contract CryptoLegendsNFT is ERC721Enumerable {
     mapping(address => World) public addressToWorld;
     mapping(address => uint256) ownerWorldCount;
 
+    enum Terrain {
+        Lake,
+        River,
+        Plain,
+        Mountain
+    }
+
+    // Hashing the seed with coordinates
+    function _coordinateHashFunction(
+        uint256 _seed,
+        uint256 _x,
+        uint256 _y
+    ) internal pure returns (uint256) {
+        return uint256(keccak256(abi.encodePacked(_seed, _x, _y)));
+    }
+
+    // Mapping the hashed value to a terrain type
+    function getTerrain(
+        uint256 _seed,
+        uint256 _x,
+        uint256 _y
+    ) public pure returns (Terrain) {
+        uint256 hashedValue = _coordinateHashFunction(_seed, _x, _y);
+        if (hashedValue % 4 == 0) {
+            return Terrain.Lake;
+        } else if (hashedValue % 4 == 1) {
+            return Terrain.River;
+        } else if (hashedValue % 4 == 2) {
+            return Terrain.Plain;
+        } else {
+            return Terrain.Mountain;
+        }
+    }
+
+    function getMyTerrain(uint256 _x, uint256 _y)
+        public
+        view
+        returns (Terrain)
+    {
+        uint256 _seed = getWorldSeed();
+        return getTerrain(_seed, _x, _y);
+    }
+
     function start() public {
         require(
             ownerWorldCount[msg.sender] == 0,
@@ -46,12 +89,11 @@ contract CryptoLegendsNFT is ERC721Enumerable {
 
     function _releaseLevel(uint256 _level) private {
         //ゲームを始めているか
-        require(isStarted(),"Must have started the game");
+        require(isStarted(), "Must have started the game");
         //解放可能なレベルがあるか
         require(
-            addressToWorld[msg.sender].releasableLevel ==
-                _level,
-                "Level must be releasable"
+            addressToWorld[msg.sender].releasableLevel == _level,
+            "Level must be releasable"
         );
 
         //レベルワールドを追加する
