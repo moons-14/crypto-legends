@@ -1,0 +1,243 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "x",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "y",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "seed",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "scale",
+						"type": "uint32"
+					}
+				],
+				"name": "computePerlin",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "x",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "y",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "scale",
+						"type": "uint32"
+					}
+				],
+				"name": "getCorners",
+				"outputs": [
+					{
+						"internalType": "uint32[2][4]",
+						"name": "",
+						"type": "uint32[2][4]"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "x",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "y",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "scale",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "seed",
+						"type": "uint32"
+					}
+				],
+				"name": "getGradientAt",
+				"outputs": [
+					{
+						"internalType": "int16[2]",
+						"name": "",
+						"type": "int16[2]"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "x",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "y",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "scale",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "seed",
+						"type": "uint32"
+					}
+				],
+				"name": "getSingleScalePerlin",
+				"outputs": [
+					{
+						"internalType": "int128",
+						"name": "",
+						"type": "int128"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "cornerX",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "cornerY",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "x",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "y",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "scale",
+						"type": "uint32"
+					}
+				],
+				"name": "getWeight",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int128",
+						"name": "x",
+						"type": "int128"
+					}
+				],
+				"name": "smoothStep",
+				"outputs": [
+					{
+						"internalType": "int128",
+						"name": "",
+						"type": "int128"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/libraries/Perlin.sol": "Perlin"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"abdk-libraries-solidity/ABDKMath64x64.sol": {
+			"keccak256": "0x1364fdc24192b982f647c7fc68dcb2f6fc1b5e201843e773144bd23a76cb3b97",
+			"license": "BSD-4-Clause",
+			"urls": [
+				"bzz-raw://490712cc07db32f274899b17aade9c975f06010848c21500b8a5ead6898e09c7",
+				"dweb:/ipfs/QmZMPKjDgwCFSGdLWJW6g5E7hDLByA9hNjXzAwJ4GKTZvN"
+			]
+		},
+		"contracts/libraries/Perlin.sol": {
+			"keccak256": "0xf880194cfe09e9a4f3eaa886c884690c554fa992a655f2cb0d0153bd1c2251be",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6ce7c37db64d91f4b9442bc3303a3e59a7303ec18b4b14d5f9743e868780d995",
+				"dweb:/ipfs/QmcxwDrz4uDvszpZQFpxZPA9NfiSv7bfg6cERojQiSd8CU"
+			]
+		}
+	},
+	"version": 1
+}
